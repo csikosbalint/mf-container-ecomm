@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-loading-skeleton": "^2.1.1",
     "react-promise-suspense": "^0.3.3",
     "react-responsive-carousel": "^3.2.7",
     "react-router-dom": "^5.2.0",
@@ -18,9 +19,10 @@
     "recharts": "^1.8.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "watch": "nodemon --delay 5 --watch src --watch public --exec \"yarn build && serve -s build --cors -p 3000\"",
+    "start": "PORT=3000 react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -37,5 +39,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "react-app-rewired": "^2.1.6",
+    "webpack-visualizer-plugin": "^0.1.11"
   }
 }

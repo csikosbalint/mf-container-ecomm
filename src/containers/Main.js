@@ -10,8 +10,6 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
-import MicroFrontend from './../components/MicroFrontend';
-
 import {
   GridList,
   Paper,
@@ -27,6 +25,7 @@ import {
   useTheme,
 } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Integration from '../integrations/Integration';
 
 export default function Main(props) {
   let themeMui = createMuiTheme({
@@ -126,7 +125,12 @@ export default function Main(props) {
     <ThemeProvider theme={themeMui}>
       <Container maxWidth="lg" className={classes.container}>
         <p>Container</p>
-        <MicroFrontend host="http://localhost:4000" name="Menu" />
+        <Integration
+          host="http://localhost:4000"
+          name="Menu"
+          id="1"
+          theme={themeMui}
+        />
         <Carousel
           className={classes.carousel}
           showThumbs={false}
