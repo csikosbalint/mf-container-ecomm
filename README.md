@@ -2,6 +2,7 @@
 
 - packing
   - version changes/collosions
+  - dependencies
 - style
   - responsiveness
   - themes
@@ -14,6 +15,7 @@
     - slowness
     - failed -> retry
   - exception handling
+  - communication
   - lazy loaded chunks
 - authentication
   - token based
