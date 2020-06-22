@@ -1,5 +1,6 @@
 const Visualizer = require('webpack-visualizer-plugin');
 module.exports = (config, env) => {
+  config.output.publicPath = `/ROOT`;
   config.optimization.runtimeChunk = false;
   config.optimization.flagIncludedChunks = true;
   config.optimization.splitChunks = {
