@@ -1,5 +1,6 @@
 const Visualizer = require('webpack-visualizer-plugin');
 module.exports = (config, env) => {
+  config.output.publicPath = `/ROOT`;
   config.optimization.runtimeChunk = false;
   config.optimization.flagIncludedChunks = true;
   config.optimization.splitChunks = {
@@ -23,8 +24,8 @@ module.exports = (config, env) => {
   };
   config.externals = [
     {
-      react: 'React',
-      'react-dom': 'ReactDOM',
+      // react: 'React',
+      // 'react-dom': 'ReactDOM',
     },
     // externalMaterialUI,
   ];
