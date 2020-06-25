@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { ThemeProvider } from '@material-ui/core';
 
-const MANIFEST = {
+export const MANIFEST = {
   name: 'MenuMF',
   namespace: 'com.example',
   version: '1.0',
@@ -16,6 +16,11 @@ const MANIFEST = {
     MaterialUI: {
       version: '^4.10.0',
       objects: ['ThemeProvider'],
+    },
+  },
+  communication: {
+    command: {
+      cmd: '',
     },
   },
 };
@@ -62,14 +67,27 @@ export default function MenuAPI(props) {
       }}
       onLoad={() => {
         console.log(`onLoad`);
+        let msg = { ...MANIFEST.communication.command };
+        msg.cmd = 'start';
         window.document
           .getElementById(`${MANIFEST.name}-${id}-iframe`)
-          .contentWindow.postMessage('start', 'https://www.sandbox-bud.net');
+          .contentWindow.postMessage(msg, `${window.location.href}`);
+        window.addEventListener('message', receive);
       }}
     ></iframe>
   );
 }
 
-export function consumes() {}
-
-export function provides() {}
+function receive(event) {
+  if (event.source.MF) {
+    const msg = event.data;
+    switch (msg.cmd) {
+      case 'done': {
+        console.log('done');
+        break;
+      }
+      default: {
+      }
+    }
+  }
+}
